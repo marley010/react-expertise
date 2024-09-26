@@ -1,20 +1,28 @@
-import Book from "./components/Book";
-import Booklist from "./components/booklist";
-import './App.css'
-import Header from "./components/Header";
-import Layout from "./components/Layout";
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home.jsx';
+import About from './Pages/About.jsx';
+import Navigation from './Pages/Navigation.jsx';
+import NoPage from './Pages/NoPage';
+
 
 function App() {
   return (
-    <>
-      <h1>deCAACopio</h1>
-      <Layout>
-      <Header />
-      <Booklist />
-      </Layout>
+<div classname='App'>
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Navigation/>}>
+      <Route index element={<Home />} />
+      <Route path='/home' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path='*' element={<NoPage />} />
+      </Route>
       
-    </>
+    </Routes>
+  </BrowserRouter>
+</div>
   );
 }
 
 export default App;
+
